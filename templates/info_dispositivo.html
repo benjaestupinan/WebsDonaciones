@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/info_dispositivo.css') }}">
+</head>
+<body>
+    <a class="volverLink" href="{{ url_for('index') }}"> volver al inicio </a>
+    <h1>Informacion Dispositivo</h1>
+    {% if error %}
+        {{ error }}
+    {% endif %}
+    <div id="parent">
+        <div class="donante">
+            <div><span>Nombre donante:</span> {{ data[0] }}</div>
+            <div><span>Mail donante:</span> {{ data[1] }}</div>
+            <div><span>Telefono donante:</span> {{ data[2] }}</div>
+        </div>
+        <div class="dispositivo">
+            <div class="info">
+                <div><span>Tipo:</span> {{ data[3] }}</div>
+                <div><span>Nombre:</span> {{ data[4] }}</div>
+                <div><span>Descripcion:</span> {{ data[5] }}</div>
+                <div><span>Estado:</span> {{ data[6] }}</div>
+                <div><span>Años de uso:</span> {{ data[7] }}</div>
+                <div><span>Comuna:</span> {{ data[8] }}</div>
+            </div>
+            <div class="imgDiv" id="imgDiv">
+                <img src="{{ url_for('static', filename=data[9]) }}" alt="imagen dispositivo" width="640" height="480" id="img"/>
+            </div>
+        </div>
+        <div class="comentarios" id="comments">
+            {% if comentarios %}
+                <b>Comentarios:</b></br>
+                {% for comentario in comentarios %}
+                    {{ comentario[1] }}({{ comentario[3] }}) : {{ comentario[2] }} </br>
+                {% endfor %}
+            {% else %}
+                <b>Aun no hay comentarios</b>
+            {% endif %}
+        </div>
+    </div>
+    <form method="post" class="agregarComment">
+        <b>Agregar Comentario:</b>
+        <div>
+            <label for="autor">¿Cual es tu nombre?</label><br/>
+            <input type="text" id="autor" name="autor" placeholder="Tu Nombre">
+        </div>
+        <div>
+            <label for="comment">¿Que quieres decir?</label><br/>
+            <input type="text" id="comment" name="comment" placeholder="Tu comentario">
+        </div>
+        <button type="submit" id="agregar-btn">agregar</button>
+    </form>
+   
+    <script lang="javascript" src="{{ url_for('static', filename='js/info_dispositivo.js') }}"></script>
+</body>
+</html>

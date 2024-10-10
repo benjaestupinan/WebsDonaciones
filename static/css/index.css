@@ -1,0 +1,38 @@
+body {
+    background-color: rgba(0, 0, 255, 0.2);
+}
+
+.buttons {
+    text-decoration-line: none;
+    color: #000;
+    border: 1px solid #000;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.buttons:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    min-width: fit-content;
+}
+
+.gracias {
+    margin: auto;
+    width: fit-content;
+    margin-top: 100px;
+    font-size: larger;
+    font-weight: bolder;
+}

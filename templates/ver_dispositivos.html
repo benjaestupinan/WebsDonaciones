@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Dispositivos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ver_dispositivos.css') }}">
+</head>
+<body>
+    <a class="volverLink" href="{{ url_for('index') }}"> volver al inicio </a>
+    <h1>Tabla de Dispositivos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Nombre Dispositivo</th>
+                <th>Estado</th>
+                <th>Comuna</th>
+                <th>Fotos</th>
+            </tr>
+        </thead>
+        <tbody id="parent">
+            {% if data %}
+                {% for disp in data %}
+                    <tr id="row{{ disp[5] }}" data-href="{{ url_for('info_dispositivo', disp_id=disp[6]) }}">
+                        <td>{{ disp[0] }}</td>
+                        <td>{{ disp[1] }}</td>
+                        <td>{{ disp[2] }}</td>
+                        <td>{{ disp[3] }}</td>
+                        <td><img src="{{ url_for('static', filename=disp[4]) }}" alt="imagen dispositivo" width="120" height="120"></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="buttonsDiv">
+        {% if num > 1 %}
+            <a href="{{ url_for('ver_dispositivos', num=(num-1)) }}" class="buttons">anterior</a>
+        {% endif %}
+        
+        {% if not last %}
+            <a href="{{ url_for('ver_dispositivos', num=(num+1)) }}" class="buttons">siguiente</a>
+        {% endif %}
+    </div>
+
+    <script lang="javascript" src="{{ url_for('static', filename='js/ver_dispositivos.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agregar donación</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/agregar_donacion.css') }}">
+</head>
+<body id="main">
+    <a class="volverLink" href="{{ url_for('index') }}"> volver al inicio </a>
+    <h1>Agregar Donación</h1>
+    <form id="form" method="post" enctype="multipart/form-data">
+        {% if error %}
+        <div class="error-flask">
+            {{ error }}
+        </div>
+        {% endif %}
+        <div class="aloalo">
+            <div id="erroresContacto" style="border: none;"></div>
+            <h3>info contacto</h3>
+            
+            <div>
+                <label for="nombre">nombre</label>
+                <input class="smooth" type="text" size="80" id="nombre" name="nombre">
+            </div>
+            
+            <div>
+                <label for="mail">mail</label>
+                <input class="smooth" type="text" size="30" id="mail" name="mail">
+            </div>
+            
+            <div>
+                <label for="celular">celular</label>
+                <input class="smooth" type="text" size="15" id="celular" name="celular">
+            </div>
+            
+            <div>
+                <label for="region">region</label>
+                <select class="smooth" name="region" id="region">
+                    <option value="nada"> Seleccione su región </option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="comuna">comuna</label>
+                <select class="smooth" name="comuna" id="comuna">
+                    <option value="nada"> Selecciones su comuna </option>
+                </select>
+            </div>
+        </div>
+        <div id="parent" class="aloalo">
+            <div id="erroresDisp" style="border: none;"></div>
+            <input type="number" name="disp_count" id="disp_count" value="1" style="display: none;">
+            <div id="aloalo0">
+                <div>
+                    <h3>info dispositivo</h3>
+                    <button type="button" id="btn-borrar0" class="borrado"> quitar dispositivo</button>
+                </div>
+                
+                
+                <div>
+                    <label for="nombre-disp0">nombre dispositivo</label>
+                    <input type="text" class="smooth" size="80" id="nombre-disp0" name="nombre-disp0">
+                </div>
+                
+                <div class="flex">
+                    <label for="description0">descripcion</label>
+                    <textarea id="description0" cols="50" rows="4" name="description0"></textarea>
+                </div>
+                
+                <div>
+                    <label for="tipo0">tipo</label>
+                    <select id="tipo0" name="tipo0" class="smooth">
+                        <option value="nada">Seleccione tipo</option>
+                        <option value="pantalla">Pantalla</option>
+                        <option value="notebook">Notebook</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="celular">Celular</option>
+                        <option value="consola">Consola</option>
+                        <option value="mouse">Mouse</option>
+                        <option value="teclado">Teclado</option>
+                        <option value="impresora">Impresora</option>
+                        <option value="parlante">Parlante</option>
+                        <option value="audifonos">Audifonos</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label for="años-de-uso0">años de uso</label>
+                    <input type="text" size="3" class="smooth" id="años-de-uso0" name="años-de-uso0">
+                </div>
+
+                <div>
+                    <label for="estado-funcionamiento0">estado funcionamiento</label>
+                    <select class="smooth" id="estado-funcionamiento0" name="estado-funcionamiento0">
+                        <option value="nada">Como funciona su dispositivo</option>
+                        <option value="funciona perfecto">funciona perfecto</option>
+                        <option value="funciona a medias">funciona a medias</option>
+                        <option value="no funciona">no funciona</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="foto-producto0">foto de producto</label>
+                    <input type="file" class="smooth" id="foto-producto0" name="foto-producto0">
+                </div>
+                <div class="divider"></div>   
+            </div>
+        </div>
+        <div class="buttonsDiv">
+            <button type="button" class="buttons" id="agregar-dispositivo">agregar otro dispositivo</button>
+            <button type="button" class="buttons" id="publicar-donacion">publicar donacion</button>
+        </div>
+    </form>
+    <script lang="javascript" src="{{ url_for('static', filename='js/agregar-donacion.js') }}"></script>
+</body>
+</html>
