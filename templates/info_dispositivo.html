@@ -42,17 +42,18 @@
             {% endif %}
         </div>
     </div>
-    <form method="post" class="agregarComment">
+    <form id="formComentario" method="post" class="agregarComment">
         <b>Agregar Comentario:</b>
+        <div id="erroresComentario"></div>
         <div>
             <label for="autor">¿Cual es tu nombre?</label><br/>
             <input type="text" id="autor" name="autor" placeholder="Tu Nombre">
         </div>
         <div>
             <label for="comment">¿Que quieres decir?</label><br/>
-            <input type="text" id="comment" name="comment" placeholder="Tu comentario">
+            <textarea name="comment" id="comment" cols="50" rows="4"></textarea>
         </div>
-        <button type="submit" id="agregar-btn">agregar</button>
+        <button type="submit" id="agregar-btn">Agregar comentario</button>
     </form>
    
     <script lang="javascript" src="{{ url_for('static', filename='js/info_dispositivo.js') }}"></script>

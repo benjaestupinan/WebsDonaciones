@@ -63,3 +63,9 @@ body {
     height: 1024px;
     overflow: hidden;
 }
+
+.erroresComentario {
+    border-radius: 5px;
+    border: 1px solid red;
+    background-color: rgba(150, 0, 0, .5);
+}
