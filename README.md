@@ -2,7 +2,6 @@
 
 Este es un proyecto web construido con Flask que permite a los usuarios donar dispositivos electrónicos y ver los dispositivos donados por otros usuarios. La aplicación incluye funcionalidad para validar entradas, subir imágenes, y gestionar datos a través de una base de datos.
 
-![Icono.png](icon.png)
 
 ## Estructura del Proyecto
 
