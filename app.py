@@ -1,9 +1,12 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, jsonify
 from database import db
+from flask_cors import cross_origin
 from utils import validations
+import random
 import hashlib
 import filetype
 import os
+from datetime import datetime, timedelta
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'static/uploads'
@@ -190,3 +193,24 @@ def info_dispositivo(disp_id):
         data.append(f"uploads/{archivo}") # data[9]
 
         return render_template("info_dispositivo.html", data=data, comentarios=comentarios)
+    
+@app.route("/get-stats-data", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def get_stats_data():
+    """
+    Since we don't have that many confessions yet but we NEED to show off
+    our fancy new chart, we are going to generate some random data.
+    """
+    get_random_date = lambda start_date, end_date : start_date + timedelta(seconds=random.randint(0, int((end_date - start_date).total_seconds())))
+    get_random_int = lambda start_int, end_int: random.randint(start_int, end_int)
+    
+    random_data = [{
+        "date": get_random_date(datetime(2020, 1, 1), datetime(2022, 12, 31)),
+        "count": get_random_int(1, 10)
+    } for _ in range(50)]
+    random_data.sort(key=lambda x: x["date"])
+
+    for row in random_data:
+        row["date"] = row["date"].strftime("%Y-%m-%d")
+
+    return jsonify(random_data)
