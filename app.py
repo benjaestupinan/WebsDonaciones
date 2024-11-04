@@ -221,6 +221,23 @@ def get_disp_por_tipo():
     data = db.get_disp_count_by_tipo()
     return jsonify(data)
 
+@app.route("/get-cont-por-comuna", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def get_cont_por_comuna():
+    data = db.get_cont_por_comuna()
+    formatedData = []
+    
+    for dato in data:
+        dato = (db.get_comuna_by_id(dato[0])[0], dato[1])
+        formatedData.append(dato)
+
+    print(formatedData)
+    return jsonify(formatedData)
+
 @app.route("/graph_tipo_dispositivos")
 def graph_tipo_dispositivos():
     return render_template("graph_tipo_dispositivos.html")
+
+@app.route("/graph_contactos_comuna")
+def graph_contactos_comuna():
+    return render_template("graph_contactos_comuna.html")

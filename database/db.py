@@ -135,3 +135,10 @@ def get_disp_count_by_tipo():
     cursor.execute("SELECT tipo,COUNT(tipo) FROM dispositivo GROUP BY tipo;")
     data = cursor.fetchall()
     return data
+
+def get_cont_por_comuna():
+    conn = getConnection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT comuna_id,COUNT(comuna_id) FROM contacto GROUP BY comuna_id;")
+    data = cursor.fetchall()
+    return data
