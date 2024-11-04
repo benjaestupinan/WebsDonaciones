@@ -128,3 +128,10 @@ def create_comment(autor, texto, disp_id):
     cursor.execute("INSERT INTO comentario (nombre, texto, fecha, dispositivo_id) VALUES (%s, %s, %s, %s)", (autor, texto, texto_fecha_hora, disp_id))
     conn.commit()
     return True, None
+
+def get_disp_count_by_tipo():
+    conn = getConnection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT tipo,COUNT(tipo) FROM dispositivo GROUP BY tipo;")
+    data = cursor.fetchall()
+    return data

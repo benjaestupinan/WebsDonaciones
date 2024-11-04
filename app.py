@@ -214,3 +214,13 @@ def get_stats_data():
         row["date"] = row["date"].strftime("%Y-%m-%d")
 
     return jsonify(random_data)
+
+@app.route("/get-disp-por-tipo", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def get_disp_por_tipo():
+    data = db.get_disp_count_by_tipo()
+    return jsonify(data)
+
+@app.route("/graph_tipo_dispositivos")
+def graph_tipo_dispositivos():
+    return render_template("graph_tipo_dispositivos.html")

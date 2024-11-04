@@ -8,7 +8,12 @@
 </head>
 <body>
     <a class="volverLink" href="{{ url_for('index') }}"> volver al inicio </a>
+
+    <h1>Grafico</h1>
+    
+    {% block encabezado %}{% endblock %}
    
-    <script lang="javascript" src="{{ url_for('static', filename='js/graph.js') }}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    {% block javascript %}{% endblock %}
 </body>
 </html>
